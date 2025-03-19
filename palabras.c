@@ -3,8 +3,14 @@
 
 int main(int argc, char *argv[])
 {
-    // Agregar código aquí.
+    char frase[100];
 
-    // Termina la ejecución del programa.
+    // Agregar código aquí.
+    scanf("%s", frase);
+
+    for (int i = 0; i < frase[i]; i++)
+    {
+
+    } // Termina la ejecución del programa.
     exit(EXIT_SUCCESS);
 }
