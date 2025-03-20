@@ -1,16 +1,27 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main(int argc, char *argv[])
+int main()
 {
-    char frase[100];
-
+    int word;
+    char buffer[100];
     // Agregar código aquí.
-    scanf("%s", frase);
-
-    for (int i = 0; i < frase[i]; i++)
+    int count = 0;
+    while ((word = getchar()) != EOF)
     {
+        if (word != ' ' && word != '\t' && word != '\n')
+        {
+            buffer[count] = (char)word;
+            count++;
+        }
+        else
+        {
+            buffer[count] = '\0';
+            count = 0;
+            printf("%s\n", buffer);
+        }
+    }
 
-    } // Termina la ejecución del programa.
+    // Termina la ejecución del programa.
     exit(EXIT_SUCCESS);
 }
