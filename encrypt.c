@@ -34,8 +34,8 @@ int main(int argc, char *argv[])
         char mensaje[1024] = {0};  // Inicializa con ceros
         ssize_t bytes_leidos = read(STDIN_FILENO, mensaje, sizeof(mensaje) - 1);
         if (bytes_leidos > 0) {
-            if (mensaje[bytes_leidos - 1] == '\n'){ // para no leer el salto de linea despues de presionar enter
-                mensaje[bytes_leidos - 1] = '\0';  // para no leer basura
+            if (mensaje[bytes_leidos - 1] == '\n'){
+                mensaje[bytes_leidos - 1] = '\0';  // para no leer el salto de linea despues de presionar enter, ya que read lee hasta el caracter
             }
         }      
         encriptar(fd, mensaje);
