@@ -11,7 +11,7 @@ void desencriptar(char *mensaje, int len){
     unsigned char temp_buffer[1024]; // aca se guarda el mensaje desencriptado
     int j = 0; // cantidad de bytes escritos en temp_buffer
 
-    for (int i = block_size - 1; i <= len; i += block_size ){ // comienza en el ultimo byte (7), es decir en el caracter encriptado
+    for (int i = block_size - 1; i < len; i += block_size ){ // comienza en el ultimo byte (7), es decir en el caracter encriptado
         temp_buffer[j++] = mensaje[i]; // guarda solo el byte real
     }
 
