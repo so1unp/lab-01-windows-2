@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include <fcntl.h> 
+#include <fcntl.h>
 
 #define block_size 8 // tamaño del bloque a encriptar
 
@@ -31,14 +31,13 @@ int main(int argc, char *argv[])
     // Agregar código aquí.
     if (argc == 1) // leer  desde la entrada estandar e imprimir en salida estandar
     {
-        char mensaje[1024] = {0};  // Inicializa con ceros
-        ssize_t bytes_leidos = read(STDIN_FILENO, mensaje, sizeof(mensaje) - 1);
-        if (bytes_leidos > 0) {
-            if (mensaje[bytes_leidos - 1] == '\n'){
-                mensaje[bytes_leidos - 1] = '\0';  // para no leer el salto de linea despues de presionar enter, ya que read lee hasta el caracter
-            }
-        }      
-        encriptar(fd, mensaje);
+        char mensaje[8] = {0}; // Inicializa con ceros
+        ssize_t bytes_leidos = read(STDIN_FILENO, mensaje, sizeof(mensaje));
+        while (bytes_leidos > 0)
+        {
+            encriptar(fd, mensaje);
+            bytes_leidos = read(STDIN_FILENO, mensaje, sizeof(mensaje));
+        }
     }
     else if (argc == 2) // leer desde la terminal y imprimir en la salida estandar
     {
